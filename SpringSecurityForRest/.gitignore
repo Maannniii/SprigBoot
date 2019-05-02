@@ -1,0 +1,9 @@
+.*
+!/.gitignore
+*.class
+*.log
+org.eclipse.*
+bin/
+*.jar
+**/target/
+*_ALL
