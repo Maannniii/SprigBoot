@@ -23,4 +23,9 @@ public class Userdata implements Serializable {
 	public String getEmail() {
 		return user.getEmail();
 	}
+
+	@Override
+	public String toString() {
+		return user.toString();
+	}
 }
