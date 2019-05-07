@@ -1,10 +1,8 @@
 package com.example.session.dbauth.model;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomUserDetails extends Users implements UserDetails {
@@ -12,7 +10,7 @@ public class CustomUserDetails extends Users implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	public CustomUserDetails() {
-
+		super();
 	}
 
 	public CustomUserDetails(final Users users) {
@@ -22,8 +20,7 @@ public class CustomUserDetails extends Users implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 
-		return getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
-				.collect(Collectors.toList());
+		return getRoles();
 	}
 
 	@Override
@@ -33,7 +30,7 @@ public class CustomUserDetails extends Users implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return super.getName();
+		return super.getUser_id();
 	}
 
 	@Override
@@ -47,19 +44,13 @@ public class CustomUserDetails extends Users implements UserDetails {
 	}
 
 	@Override
-	public String toString() {
-		return "CustomUserDetails [getAuthorities()=" + getAuthorities() + ", getPassword()=" + getPassword()
-				+ ", getUsername()=" + getUsername() + ", isAccountNonExpired()=" + isAccountNonExpired()
-				+ ", isAccountNonLocked()=" + isAccountNonLocked() + ", isCredentialsNonExpired()="
-				+ isCredentialsNonExpired() + ", isEnabled()=" + isEnabled() + ", getId()=" + getId() + ", getEmail()="
-				+ getEmail() + ", getName()=" + getName() + ", getLastName()=" + getLastName() + ", getActive()="
-				+ getActive() + ", getRoles()=" + getRoles() + ", toString()=" + super.toString() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + "]";
+	public boolean isCredentialsNonExpired() {
+		return true;
 	}
 
 	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
+	public String toString() {
+		return super.toString();
 	}
 
 	@Override
