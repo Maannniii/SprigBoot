@@ -50,20 +50,6 @@ public class SessionSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().httpBasic().disable().formLogin().disable().logout().disable();
 	}
 
-	private PasswordEncoder getPasswordEncoder() {
-		return new PasswordEncoder() {
-			@Override
-			public String encode(CharSequence charSequence) {
-				return charSequence.toString();
-			}
-
-			@Override
-			public boolean matches(CharSequence charSequence, String s) {
-				return true;
-			}
-		};
-	}
-
 	@Bean
 	public PasswordUpgrader getNTLMPasswordEncoder() {
 		return new PasswordUpgrader();
