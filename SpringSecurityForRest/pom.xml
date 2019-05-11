@@ -40,6 +40,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<!-- NTLM Password hash -->
+		<dependency>
+			<groupId>org.codelibs</groupId>
+			<artifactId>jcifs</artifactId>
+			<version>1.3.18.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -10,12 +10,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.savedrequest.NullRequestCache;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
 
+import com.example.session.dbauth.customauth.PasswordUpgrader;
 import com.example.session.dbauth.repository.UsersRepository;
 import com.example.session.dbauth.service.CustomUserDetailsService;
 
@@ -35,7 +35,7 @@ public class SessionSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(getBcryotPasswordEncoder());
+		auth.userDetailsService(userDetailsService).passwordEncoder(getNTLMPasswordEncoder());
 	}
 
 	@Override
@@ -65,7 +65,8 @@ public class SessionSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
-	public BCryptPasswordEncoder getBcryotPasswordEncoder() {
-		return new BCryptPasswordEncoder(10);
+	public PasswordUpgrader getNTLMPasswordEncoder() {
+		return new PasswordUpgrader();
 	}
+
 }
