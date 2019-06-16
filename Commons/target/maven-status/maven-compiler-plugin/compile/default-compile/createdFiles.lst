@@ -1,6 +1,0 @@
-com/cogknit/config/session/dbauth/service/Userdata.class
-com/cogknit/config/session/dbauth/repository/UsersRepository.class
-com/cogknit/config/session/dbauth/model/CustomUserDetails.class
-com/cogknit/config/session/dbauth/model/Role.class
-com/cogknit/config/session/dbauth/service/CustomUserDetailsService.class
-com/cogknit/config/session/dbauth/model/Users.class

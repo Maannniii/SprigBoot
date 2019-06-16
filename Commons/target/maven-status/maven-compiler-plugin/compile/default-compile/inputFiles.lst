@@ -1,6 +1,0 @@
-/home/mani/work/git/RND/Commons/src/main/java/com/cogknit/config/session/dbauth/service/CustomUserDetailsService.java
-/home/mani/work/git/RND/Commons/src/main/java/com/cogknit/config/session/dbauth/model/CustomUserDetails.java
-/home/mani/work/git/RND/Commons/src/main/java/com/cogknit/config/session/dbauth/model/Role.java
-/home/mani/work/git/RND/Commons/src/main/java/com/cogknit/config/session/dbauth/model/Users.java
-/home/mani/work/git/RND/Commons/src/main/java/com/cogknit/config/session/dbauth/repository/UsersRepository.java
-/home/mani/work/git/RND/Commons/src/main/java/com/cogknit/config/session/dbauth/service/Userdata.java
