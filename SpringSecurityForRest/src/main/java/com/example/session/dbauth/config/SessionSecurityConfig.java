@@ -41,12 +41,15 @@ public class SessionSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// https://www.baeldung.com/spring-security-session
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
-		http.csrf().disable().authorizeRequests() //
+		http.csrf().disable();
+		http.authorizeRequests() //
 				.antMatchers("/ua/*").permitAll() //
 				.antMatchers("/auth/*").authenticated() //
 				.and().requestCache() //
-				.requestCache(new NullRequestCache()) //
-				.and().httpBasic().disable().formLogin().disable().logout().disable();
+				.requestCache(new NullRequestCache());
+		http.httpBasic().disable();
+		http.formLogin().disable();
+		http.logout().disable();
 	}
 
 	@Bean

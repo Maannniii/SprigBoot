@@ -7,16 +7,16 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.example.session.dbauth.model.Users;
+import com.example.session.dbauth.model.CustomUserDetails;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Userdata implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Users user;
+	private CustomUserDetails user;
 
-	public void setUser(Users user) {
+	public void setUser(CustomUserDetails user) {
 		this.user = user;
 	}
 

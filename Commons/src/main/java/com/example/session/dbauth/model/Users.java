@@ -1,9 +1,6 @@
 package com.example.session.dbauth.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Entity
 @Table(name = "user_data")
@@ -283,16 +276,6 @@ public class Users implements Serializable {
 //	public String getLastName() {
 //		return lastName;
 //	}
-//
-//	
-//
-//	
-//
-//	
-//
-//	
-//
-//	
 //
 //	public Collection<? extends GrantedAuthority> getRoles() {
 //		return new ArrayList<GrantedAuthority>(

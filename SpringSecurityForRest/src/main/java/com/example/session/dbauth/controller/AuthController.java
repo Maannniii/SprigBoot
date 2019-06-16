@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.session.dbauth.service.Userdata;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/auth")
@@ -35,7 +33,7 @@ public class AuthController {
 		return user.getEmail();
 	}
 
-	@Secured("stakeholder")
+	@PreAuthorize("hasRole('ROLE_STAKEHOLDER')")
 	@GetMapping("/userdetails")
 	public String getUserObject() {
 		return user.toString();

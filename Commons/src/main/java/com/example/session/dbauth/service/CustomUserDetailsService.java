@@ -1,7 +1,6 @@
 package com.example.session.dbauth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,8 +26,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Users users = usersRepository.findByName(username);
-		user.setUser(users);
-		return new CustomUserDetails(users, rolerepo.findByUserid(users.getUser_id()));
+		CustomUserDetails CustomUser = new CustomUserDetails(users, rolerepo.findByUserid(users.getUser_id()));
+		user.setUser(CustomUser);
+		return CustomUser;
 	}
 
 }

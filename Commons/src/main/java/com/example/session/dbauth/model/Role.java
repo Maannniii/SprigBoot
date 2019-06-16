@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-class RoleIds implements Serializable{
+class RoleIds implements Serializable {
 	/**
 	 * 
 	 */

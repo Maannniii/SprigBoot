@@ -16,7 +16,7 @@ public class CustomUserDetails extends Users implements UserDetails {
 		super();
 	}
 
-	public CustomUserDetails(final Users users,Set<Role> roles) {
+	public CustomUserDetails(final Users users, Set<Role> roles) {
 		super(users);
 		setAuthorities(roles);
 	}
@@ -52,15 +52,15 @@ public class CustomUserDetails extends Users implements UserDetails {
 			}
 			switch (role.getPrivilege_id()) {
 			case 1:
-				authorities.add(new SimpleGrantedAuthority("stakeholder"));
+				authorities.add(new SimpleGrantedAuthority("ROLE_STAKEHOLDER"));
 				stakeholderLevel = role_level;
 				break;
 			case 2:
-				authorities.add(new SimpleGrantedAuthority("sme"));
+				authorities.add(new SimpleGrantedAuthority("ROLE_SME"));
 				coachLevel = role_level;
 				break;
 			case 3:
-				authorities.add(new SimpleGrantedAuthority("curator"));
+				authorities.add(new SimpleGrantedAuthority("ROLE_CURATOR"));
 				curatorLevel = role_level;
 				break;
 			}
@@ -78,6 +78,7 @@ public class CustomUserDetails extends Users implements UserDetails {
 	public String getCuratorLevel() {
 		return curatorLevel;
 	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
