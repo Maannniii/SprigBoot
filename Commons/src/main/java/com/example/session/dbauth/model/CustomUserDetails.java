@@ -1,8 +1,11 @@
 package com.example.session.dbauth.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomUserDetails extends Users implements UserDetails {
@@ -13,15 +16,74 @@ public class CustomUserDetails extends Users implements UserDetails {
 		super();
 	}
 
-	public CustomUserDetails(final Users users) {
+	public CustomUserDetails(final Users users,Set<Role> roles) {
 		super(users);
+		setAuthorities(roles);
 	}
 
+	/*******************************************************************************/
+	private Collection<GrantedAuthority> authorities;
+	private String stakeholderLevel;
+	private String coachLevel;
+	private String curatorLevel;
+//	private boolean isCorporateStakeholder;
+//	private boolean isCompanyStakeholder;
+//	private boolean isBuStakeholder;
+//	private boolean isCorporateCoach;
+//	private boolean isCorporateCurator;
+
+	public void setAuthorities(Set<Role> roles) {
+		authorities = new ArrayList<GrantedAuthority>();
+		for (Role role : roles) {
+			String role_level = "";
+			switch (role.getRole_level_id()) {
+			case 1:
+				role_level = "corporate";
+				break;
+			case 2:
+				role_level = "company";
+				break;
+			case 3:
+				role_level = "businessunit";
+				break;
+			case 4:
+				role_level = "team";
+				break;
+			}
+			switch (role.getPrivilege_id()) {
+			case 1:
+				authorities.add(new SimpleGrantedAuthority("stakeholder"));
+				stakeholderLevel = role_level;
+				break;
+			case 2:
+				authorities.add(new SimpleGrantedAuthority("sme"));
+				coachLevel = role_level;
+				break;
+			case 3:
+				authorities.add(new SimpleGrantedAuthority("curator"));
+				curatorLevel = role_level;
+				break;
+			}
+		}
+	}
+
+	public String getStakeholderLevel() {
+		return stakeholderLevel;
+	}
+
+	public String getCoachLevel() {
+		return coachLevel;
+	}
+
+	public String getCuratorLevel() {
+		return curatorLevel;
+	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-
-		return getRoles();
+		return authorities;
 	}
+
+	/*******************************************************************************/
 
 	@Override
 	public String getPassword() {

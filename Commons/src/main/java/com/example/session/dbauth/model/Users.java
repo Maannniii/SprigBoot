@@ -2,8 +2,8 @@ package com.example.session.dbauth.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -94,6 +95,7 @@ public class Users implements Serializable {
 	}
 
 	protected Users() {
+
 	}
 
 	public String getFirstname() {
@@ -222,25 +224,6 @@ public class Users implements Serializable {
 
 	public String getUser_id() {
 		return id;
-	}
-
-	public Collection<? extends GrantedAuthority> getRoles() {
-		return new ArrayList<GrantedAuthority>(
-				Arrays.asList(new SimpleGrantedAuthority("ADMIN"), new SimpleGrantedAuthority("USER")));
-	}
-
-	@Override
-	public String toString() {
-		return "Users [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", phone=" + phone
-				+ ", email=" + email + ", bu_id=" + bu_id + ", band_id=" + band_id + ", grade=" + grade + ", dept_id="
-				+ dept_id + ", desgn_id=" + desgn_id + ", company_id=" + company_id + ", location_id=" + location_id
-				+ ", status=" + status + ", type=" + type + ", isEnable=" + isEnable + ", userupdated=" + userupdated
-				+ ", moodleid=" + moodleid + ", moodle_token=" + moodle_token + ", lastloginTime=" + lastloginTime
-				+ ", learningStyle=" + learningStyle + ", created_at=" + created_at + ", invalidLoginCount="
-				+ invalidLoginCount + ", invalidLoginTimeStamp=" + invalidLoginTimeStamp + ", lastlogoutTime="
-				+ lastlogoutTime + ", loginCount=" + loginCount + ", flashScreen=" + flashScreen + ", profile_status="
-				+ profile_status + ", func_id=" + func_id + ", subfunc_id=" + subfunc_id + ", region_id=" + region_id
-				+ ", password=" + password + "]";
 	}
 
 }
