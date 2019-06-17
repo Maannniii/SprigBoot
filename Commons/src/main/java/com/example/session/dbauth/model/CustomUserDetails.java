@@ -68,15 +68,15 @@ public class CustomUserDetails extends Users implements UserDetails {
 		}
 	}
 
-	public String getStakeholderLevel() {
+	public Set<String> getStakeholderLevels() {
 		return stakeholderLevel;
 	}
 
-	public String getCoachLevel() {
+	public Set<String> getCoachLevels() {
 		return coachLevel;
 	}
 
-	public String getCuratorLevel() {
+	public Set<String> getCuratorLevels() {
 		return curatorLevel;
 	}
 
