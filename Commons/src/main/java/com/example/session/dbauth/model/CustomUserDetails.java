@@ -2,6 +2,7 @@ package com.example.session.dbauth.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -23,9 +24,9 @@ public class CustomUserDetails extends Users implements UserDetails {
 
 	/*******************************************************************************/
 	private Collection<GrantedAuthority> authorities;
-	private String stakeholderLevel;
-	private String coachLevel;
-	private String curatorLevel;
+	private Set<String> stakeholderLevel = new HashSet<String>();
+	private Set<String> coachLevel = new HashSet<String>();
+	private Set<String> curatorLevel = new HashSet<String>();
 //	private boolean isCorporateStakeholder;
 //	private boolean isCompanyStakeholder;
 //	private boolean isBuStakeholder;
@@ -53,15 +54,15 @@ public class CustomUserDetails extends Users implements UserDetails {
 			switch (role.getPrivilege_id()) {
 			case 1:
 				authorities.add(new SimpleGrantedAuthority("ROLE_STAKEHOLDER"));
-				stakeholderLevel = role_level;
+				stakeholderLevel.add(role_level);
 				break;
 			case 2:
 				authorities.add(new SimpleGrantedAuthority("ROLE_SME"));
-				coachLevel = role_level;
+				coachLevel.add(role_level);
 				break;
 			case 3:
 				authorities.add(new SimpleGrantedAuthority("ROLE_CURATOR"));
-				curatorLevel = role_level;
+				curatorLevel.add(role_level);
 				break;
 			}
 		}
