@@ -7,6 +7,11 @@
 	<version>0.0.1</version>
 	<name>Commmons</name>
 	<description>Commpns to include all the common sharable code.</description>
+	<parent>
+		<groupId>com.cogknit</groupId>
+		<artifactId>test-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -28,7 +33,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>Commons</finalName>
+		<finalName>Commons-${build}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
