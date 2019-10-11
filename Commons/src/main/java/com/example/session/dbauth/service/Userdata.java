@@ -16,8 +16,9 @@ public class Userdata implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private CustomUserDetails user;
 
-	public void setUser(CustomUserDetails user) {
+	protected CustomUserDetails initUser(CustomUserDetails user) {
 		this.user = user;
+		return user;
 	}
 
 	public String getEmail() {
